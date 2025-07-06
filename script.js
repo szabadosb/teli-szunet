@@ -187,3 +187,49 @@ const counterEl = document.getElementById('counter').querySelector('span');
         // First run and update every second
         updateAll();
         setInterval(updateAll, 1000);
+
+        function updateRemainingBreak() {
+    const now = new Date();
+
+    const breakStart = new Date(now.getFullYear(), 11, 20); // dec 20
+    let breakEnd = new Date(now.getFullYear(), 0, 5);       // jan 5
+
+    // Ha januárban vagyunk → breakEnd legyen a következő év jan 5
+    if (breakEnd < breakStart) {
+        breakEnd = new Date(now.getFullYear() + 1, 0, 5);
+    }
+
+    const box = document.getElementById("remaining-break-box");
+    const text = document.getElementById("remaining-break-text");
+
+    if (now >= breakStart && now < breakEnd) {
+        // ====== Szünidő van ======
+        box.style.display = "block";
+
+        const diff = breakEnd - now;
+        const totalSeconds = Math.floor(diff / 1000);
+
+        const d = Math.floor(totalSeconds / (3600 * 24));
+        const h = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+
+        text.innerHTML =
+            `A téli szünetből még hátravan:<br>
+            <span class="number">${formatNumber(d)}</span> nap
+            <span class="number">${formatNumber(h)}</span> óra
+            <span class="number">${formatNumber(m)}</span> perc
+            <span class="number">${formatNumber(s)}</span> mp.`;
+    } else {
+        // ====== Nincs szünidő ======
+        box.style.display = "none";
+    }
+}
+updateRemainingBreak();
+
+function updateAll() {
+    const target = getTargetDate();
+    updateMainCounter(target);
+    updateDetailedBox(target);
+    updateRemainingBreak();   // <--- ÚJ
+}
