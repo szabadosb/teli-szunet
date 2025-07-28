@@ -1,0 +1,219 @@
+
+        /* Global styles based on user's provided CSS */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            /* Téli háttérkép */
+            background-image: url(kep.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Counter and other elements CSS */
+        #counter {
+            background-color: rgba(173, 216, 230, 0.9); /* Light blue for winter */
+            padding: 40px 80px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            font-size: 3rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #counter span {
+            display: inline-block;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #countdown-box {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 25px 60px;
+            border-radius: 20px;
+            font-size: 2.3rem;
+            color: #f9f9f9;
+            backdrop-filter: blur(4px);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        .hourglass {
+            position: relative;
+            width: 60px;
+            height: 100px;
+            margin-top: 40px;
+            border: 4px solid white;
+            border-radius: 10px;
+            animation: rotateHourglass 4s infinite linear;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top-sand, .bottom-sand {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+        }
+
+        .top-sand {
+            border-bottom: 20px solid #ffcc66;
+            top: 10px;
+            animation: topSandFlow 2s infinite;
+        }
+
+        .neck {
+            width: 4px;
+            height: 20px;
+            background-color: #ffcc66;
+            animation: neckFlow 2s infinite;
+        }
+
+        .bottom-sand {
+            border-top: 20px solid #ffcc66;
+            bottom: 10px;
+            animation: bottomSandFill 2s infinite;
+        }
+
+        @keyframes rotateHourglass {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes topSandFlow {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes neckFlow {
+            0% { height: 20px; }
+            50% { height: 5px; }
+            100% { height: 20px; }
+        }
+
+        @keyframes bottomSandFill {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .total-countdown-box {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: rgba(70, 130, 180, 0.8); /* Steel blue for winter */
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            z-index: 100;
+        }
+
+        .total-countdown-box p {
+            margin: 4px 0;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1000px) {
+            .total-countdown-box {
+                font-size: 20px;
+                padding: 25px;
+            }
+
+            .total-countdown-box p {
+                font-size: 26px;
+            }
+
+            #counter,
+            #countdown-box {
+                font-size: 32px;
+                padding: 20px;
+            }
+
+            #counter span,
+            #countdown-box span {
+                font-size: 60px;
+            }
+
+            .hourglass {
+                width: 70px;
+                height: 120px;
+                margin-top: 30px;
+            }
+        }
+
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 99;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            animation: confetti-fall 4s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .footer-link {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            z-index: 100;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        @media screen and (max-width: 1000px) {
+            .footer-link {
+                font-size: 2.9rem;
+                padding: 10px 15px;
+            }
+        }
+   
