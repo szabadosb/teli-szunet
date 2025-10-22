@@ -1,4 +1,4 @@
-       const counterEl = document.getElementById('counter').querySelector('span');
+const counterEl = document.getElementById('counter').querySelector('span');
         const detailedEl = document.getElementById('detailed-countdown');
         let confettiInterval = null;
         let confettiCleanupTimeout = null;
@@ -108,6 +108,10 @@
             console.log("Konfetti leállítva!");
         }
 
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+
         function updateMainCounter(target) {
             const now = new Date();
             const diffInSeconds = Math.floor((target - now) / 1000);
@@ -140,7 +144,7 @@
 
             counterEl.classList.add('fade-out');
             setTimeout(() => {
-                counterEl.textContent = `${diffInSeconds.toLocaleString()} másodperc van hátra a téli szünetig!`;
+                counterEl.textContent = `${formatNumber(diffInSeconds)} másodperc van hátra a téli szünetig!`;
                 counterEl.classList.remove('fade-out');
             }, 250);
 
@@ -165,12 +169,12 @@
             const totalMonths = getMonthDiff(now, target);
 
             if (document.getElementById("months")) {
-                document.getElementById("months").textContent = totalMonths.toLocaleString();
-                document.getElementById("weeks").textContent = totalWeeks.toLocaleString();
-                document.getElementById("days").textContent = totalDays.toLocaleString();
-                document.getElementById("hours").textContent = totalHours.toLocaleString();
-                document.getElementById("minutes").textContent = totalMinutes.toLocaleString();
-                document.getElementById("seconds").textContent = totalSeconds.toLocaleString();
+                document.getElementById("months").textContent = formatNumber(totalMonths);
+                document.getElementById("weeks").textContent = formatNumber(totalWeeks);
+                document.getElementById("days").textContent = formatNumber(totalDays);
+                document.getElementById("hours").textContent = formatNumber(totalHours);
+                document.getElementById("minutes").textContent = formatNumber(totalMinutes);
+                document.getElementById("seconds").textContent = formatNumber(totalSeconds);
             }
         }
 
@@ -183,4 +187,3 @@
         // First run and update every second
         updateAll();
         setInterval(updateAll, 1000);
- 
