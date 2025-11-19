@@ -429,7 +429,7 @@ body {
 }
 
 /* Mobil nézet: 900px alatt egymás alá, balra igazítva */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
     .footer-links-container {
         position: fixed;
         left: 10px;
@@ -440,13 +440,13 @@ body {
         align-items: flex-start; /* balra igazítva */
         z-index: 200;
         box-sizing: border-box;
-        max-height: calc(50vh); /* ne foglalja el a teljes képernyőt */
+        max-height: calc(300px); /* ne foglalja el a teljes képernyőt */
         overflow-y: auto;
         width: auto;
-        max-width: 240px; /* korlátozott szélesség mobilon */
+        max-width: 2400px; /* korlátozott szélesség mobilon */
         padding: 6px; /* kis belső tér, ne takarjon */
         background: rgba(0,0,0,0.15); /* diszkrét háttér, hogy ne tűnjön ki túlzottan */
-        border-radius: 8px;
+        border-radius: 6px;
     }
 
     .footer-link {
@@ -463,38 +463,7 @@ body {
     }
 }
 
-/* Kisebb mobilok: finomhangolás */
-@media screen and (max-width: 600px) {
-    .footer-links-container {
-        left: 8px;
-        bottom: 12px;
-        max-width: 200px;
-        max-height: calc(45vh);
-        padding: 6px;
-    }
 
-    .footer-link {
-        font-size: 1.25rem; /* kisebb készülékeken még kompaktabb */
-        padding: 8px 10px;
-    }
-
-    .footer-link img {
-        height: 1.05em;
-    }
-}
-
-#remaining-break-box {
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.25);
-    padding: 20px 50px;
-    border-radius: 20px;
-    font-size: 2rem;
-    color: #000;
-    backdrop-filter: blur(4px);
-    text-align: center;
-    max-width: 90%;
-    box-sizing: border-box;
-}
 
 /* Mobil */
 @media screen and (max-width: 600px) {
