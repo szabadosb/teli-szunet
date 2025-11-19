@@ -359,10 +359,10 @@ body {
     }
 
     .total-countdown-box {
-        font-size: 14px; /* Kisebb font-size telefonos nézetben */
-        padding: 16px; /* Kisebb padding telefonos nézetben */
+        font-size: 10px; /* Kisebb font-size telefonos nézetben */
+        padding: 13px; /* Kisebb padding telefonos nézetben */
         bottom: 20px;
-        right: 20px;
+        right: 10px;
     }
 
 }
@@ -450,7 +450,7 @@ body {
     }
 
     .footer-link {
-        font-size: 0.9rem; /* Kisebb font-size telefonos nézetben */
+        font-size: 0.7rem; /* Kisebb font-size telefonos nézetben */
         padding: 6px 8px; /* Kisebb padding telefonos nézetben */
         width: 100%; /* kitölti a konténert, de nem az egész képernyőt */
         box-sizing: border-box;
