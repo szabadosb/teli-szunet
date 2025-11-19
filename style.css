@@ -440,21 +440,46 @@ body {
         align-items: flex-start; /* balra igazítva */
         z-index: 200;
         box-sizing: border-box;
-        max-height: calc(100vh - 40px);
+        max-height: calc(50vh); /* ne foglalja el a teljes képernyőt */
         overflow-y: auto;
         width: auto;
+        max-width: 240px; /* korlátozott szélesség mobilon */
+        padding: 6px; /* kis belső tér, ne takarjon */
+        background: rgba(0,0,0,0.15); /* diszkrét háttér, hogy ne tűnjön ki túlzottan */
+        border-radius: 8px;
     }
 
     .footer-link {
-        font-size: 2.9rem;
-        padding: 10px 12px;
-        width: auto;
+        font-size: 1.6rem; /* elfogadható, érintésbarát méret */
+        padding: 8px 10px; /* kisebb, de érintésbarát */
+        width: 100%; /* kitölti a konténert, de nem az egész képernyőt */
+        box-sizing: border-box;
         justify-content: flex-start;
     }
 
     .footer-link img {
-        height: 1.3em; /* mobilon kicsit nagyobb, a szöveghez igazítva */
+        height: 1.2em; /* mobilon picit nagyobb, a szöveghez igazítva */
         width: auto;
+    }
+}
+
+/* Kisebb mobilok: finomhangolás */
+@media screen and (max-width: 600px) {
+    .footer-links-container {
+        left: 8px;
+        bottom: 12px;
+        max-width: 200px;
+        max-height: calc(45vh);
+        padding: 6px;
+    }
+
+    .footer-link {
+        font-size: 1.25rem; /* kisebb készülékeken még kompaktabb */
+        padding: 8px 10px;
+    }
+
+    .footer-link img {
+        height: 1.05em;
     }
 }
 
