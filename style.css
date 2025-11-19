@@ -359,8 +359,8 @@ body {
     }
 
     .total-countdown-box {
-        font-size: 14px;
-        padding: 16px;
+        font-size: 14px; /* Kisebb font-size telefonos nézetben */
+        padding: 16px; /* Kisebb padding telefonos nézetben */
         bottom: 20px;
         right: 20px;
     }
@@ -450,8 +450,8 @@ body {
     }
 
     .footer-link {
-        font-size: 1.0rem; /* elfogadható, érintésbarát méret */
-        padding: 8px 10px; /* kisebb, de érintésbarát */
+        font-size: 1.2rem; /* Kisebb font-size telefonos nézetben */
+        padding: 6px 8px; /* Kisebb padding telefonos nézetben */
         width: 100%; /* kitölti a konténert, de nem az egész képernyőt */
         box-sizing: border-box;
         justify-content: flex-start;
