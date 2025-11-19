@@ -450,7 +450,7 @@ body {
     }
 
     .footer-link {
-        font-size: 0.7rem; /* Kisebb font-size telefonos nézetben */
+        font-size: 0.9rem; /* Kisebb font-size telefonos nézetben */
         padding: 6px 8px; /* Kisebb padding telefonos nézetben */
         width: 100%; /* kitölti a konténert, de nem az egész képernyőt */
         box-sizing: border-box;
