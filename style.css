@@ -450,7 +450,7 @@ body {
     }
 
     .footer-link {
-        font-size: 1.6rem; /* elfogadható, érintésbarát méret */
+        font-size: 1.0rem; /* elfogadható, érintésbarát méret */
         padding: 8px 10px; /* kisebb, de érintésbarát */
         width: 100%; /* kitölti a konténert, de nem az egész képernyőt */
         box-sizing: border-box;
