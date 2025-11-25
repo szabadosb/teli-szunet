@@ -69,10 +69,10 @@ function getWeekdaySecondsBetween(startDate, endDate) {
 
     // Iskolai szünetek (Példák, csak a téli számít, de a teljesség igénye miatt itt van)
     const schoolBreaks = [
-        // Ide csak a téli szünetet tesszük, ami a visszaszámlálásban is szerepel (dec 20 - jan 5)
-        { start: new Date(2025, 11, 20), end: new Date(2026, 0, 5) }, // Téli szünet (Dec 20 - Jan 5)
-        // Tavaszi, Őszi szünetek is bekerülhetnek ha pontosak akarunk lenni a tanítási napokkal
-        // { start: new Date(2026, 2, 30), end: new Date(2026, 3, 6) }, // Tavaszi szünet (pl.)
+      { start: new Date(2025, 5, 15), end: new Date(2025, 8, 1) }, // Summer Break
+        { start: new Date(2025, 10, 23), end: new Date(2025, 10, 30) }, // Autumn Break
+        { start: new Date(2026, 0, 1), end: new Date(2026, 0, 8) }, // Winter Break
+        { start: new Date(2026, 1, 15), end: new Date(2026, 1, 22) }, // Mid-term Break
     ];
 
     while (cur < endDate) {
