@@ -52,7 +52,7 @@ function getWeekdaySecondsBetween(startDate, endDate) {
     let totalMs = 0;
     let cur = new Date(startDate);
     
-    // Ünnepnapok (Példák, 2025/2026-ra szabva - A hónap 0-indexelt)
+    /// Ünnepnapok (Példák, 2025/2026-ra szabva - A hónap 0-indexelt)
     const holidays = [
         new Date(2025, 0, 1),   // Újév napja
         new Date(2025, 3, 21),  // Húsvét hétfő (Megjegyzés: a JS1-ben 3/14 van, de az 2025-ben pontatlan volt)
@@ -61,6 +61,7 @@ function getWeekdaySecondsBetween(startDate, endDate) {
         new Date(2025, 7, 20),  // Államalapítás ünnepe
         new Date(2025, 9, 23),  // 1956-os forradalom
         new Date(2025, 10, 1),  // Mindenszentek
+        new Date(2025, 11, 24), // Karácsony
         new Date(2025, 11, 25), // Karácsony (1. nap)
         new Date(2025, 11, 26), // Karácsony (2. nap)
         // 2026-os Újév a visszaszámlálóhoz
@@ -69,10 +70,10 @@ function getWeekdaySecondsBetween(startDate, endDate) {
 
     // Iskolai szünetek (Példák, csak a téli számít, de a teljesség igénye miatt itt van)
     const schoolBreaks = [
-      { start: new Date(2025, 5, 15), end: new Date(2025, 8, 1) }, // Summer Break
-        { start: new Date(2025, 10, 23), end: new Date(2025, 10, 30) }, // Autumn Break
-        { start: new Date(2026, 0, 1), end: new Date(2026, 0, 8) }, // Winter Break
-        { start: new Date(2026, 1, 15), end: new Date(2026, 1, 22) }, // Mid-term Break
+      { start: new Date(2026, 6, 23), end: new Date(2025, 8, 1) }, // Summer Break
+        { start: new Date(2025, 10, 23), end: new Date(2025, 11,2) }, // Autumn Break
+        { start: new Date(2026, 12, 20), end: new Date(2026, 0, 5) }, // Winter Break
+        { start: new Date(2026, 4, 2), end: new Date(2026, 4, 13) }, // Mid-term Break
     ];
 
     while (cur < endDate) {
