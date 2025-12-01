@@ -183,13 +183,8 @@ function updateMainCounter(target) {
     const breakStart = new Date(now.getFullYear(), 11, 20); // December 20
     let breakEnd = new Date(now.getFullYear() + 1, 0, 5); // Január 5. (következő év elején)
 
-    // Ha december 20. előtt vagyunk, de január 5. már elmúlt az aktuális évben, akkor a következő év vége a cél
-    if (now.getMonth() > 0 && now < breakStart) {
-         // Ha jan 5. már elmúlt idén, akkor a következő téli szünet a cél
-    }
-    
     // Ha a mostani időpont a breakEnd előtt van, de a breakStart után
-    const isBreak = (now >= breakStart && now < breakEnd);
+    let isBreak = (now >= breakStart && now < breakEnd);
     // Különleges eset: Ha decemberben vagyunk, de még nem 20.
     if (now.getMonth() === 11 && now.getDate() < 20) {
         isBreak = false;
