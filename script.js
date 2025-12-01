@@ -47,6 +47,27 @@ function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
+// EXTRA: itt adhatsz meg különleges, "kivételes" iskolai napokat (alapértelmezetten üres)
+// Formátum: 'YYYY-MM-DD' pl. '2025-12-13'
+// Ha ide beírsol egy dátumot, az adott napot iskolai napként fogjuk számolni még akkor is,
+// ha hétvége (szombat/vasárnap).
+const EXTRA_SCHOOL_DAYS = [
+     '2025-12-13', // példa: ha be akarod kapcsolni, vedd ki a kommentet
+];
+
+// Segédfüggvény: dátum normalizálása 'YYYY-MM-DD' formátumba
+function toYMD(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+}
+
+// Segédfüggvény: ellenőrzi, hogy egy nap szerepel-e az EXTRA_SCHOOL_DAYS-ben
+function isExtraSchoolDay(date) {
+    return EXTRA_SCHOOL_DAYS.includes(toYMD(date));
+}
+
 // Új segédfüggvény: két időpont közötti másodpercek, hétvégéket kihagyva
 function getWeekdaySecondsBetween(startDate, endDate) {
     let totalMs = 0;
@@ -86,8 +107,13 @@ function getWeekdaySecondsBetween(startDate, endDate) {
         // Fontos: a schoolBreaks-ben a 'end' dátum exkluzív (nem tartozik bele a szünetbe)
         const isSchoolBreak = schoolBreaks.some(breakPeriod => cur >= breakPeriod.start && cur < breakPeriod.end);
 
-        // Csak hétköznap (Hétfő-Péntek) számít, ha nem ünnep és nincs szünet
-        if (day !== 0 && day !== 6 && !isHoliday && !isSchoolBreak) {
+        // Külön ellenőrzés: extra iskolai nap (kivétel), ha a cur dátum szerepel az EXTRA_SCHOOL_DAYS-ben
+        const extraDay = isExtraSchoolDay(cur);
+
+        // Csak akkor számítjuk be a napot, ha:
+        // - Hétköznap (Hétfő-Péntek) ÉS nem ünnep/ne szünet, VAGY
+        // - ez egy extra iskolai nap (extraDay) és nem ünnep és nem szünet
+        if ((!isHoliday && !isSchoolBreak) && ( (day !== 0 && day !== 6) || extraDay )) {
             totalMs += (next - cur); // Hozzáadjuk az eltelt másodperceket
         }
 
