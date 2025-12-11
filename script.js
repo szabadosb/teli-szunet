@@ -73,13 +73,21 @@ function getWeekdaySecondsBetween(startDate, endDate) {
     let totalMs = 0;
     let cur = new Date(startDate);
     const holidays = [
-        new Date(2025, 0, 1),  // Újév – január 1.
-        new Date(2025, 2, 15), // Nemzeti ünnep – március 15.
-        new Date(2025, 4, 1),  // A munka ünnepe – május 1.
+       new Date(2025, 0, 1),  // Újév – január 1.
+        new Date(2025, 2, 15), // Nemzeti ünnep – március 15. 
+        new Date(2025, 3, 18), // Nagypéntek – április 18. 
+        new Date(2025, 3, 20), // Húsvétvasárnap – április 20. 
+        new Date(2025, 3, 21), // Húsvéthétfő – április 21. 
+        new Date(2025, 4, 1),  // A munka ünnepe – május 1. 
+        new Date(2025, 4, 2),  // Pihenőnap – május 2. (áthelyezett) 
+        new Date(2025, 5, 8),  // Pünkösdvasárnap – június 8. 
+        new Date(2025, 5, 9),  // Pünkösdhétfő – június 9. 
         new Date(2025, 7, 20), // Államalapítás ünnepe – augusztus 20.
-        new Date(2025, 9, 23), // Nemzeti ünnep – október 23.
-        new Date(2025, 10, 1), // Mindenszentek – november 1.
-        new Date(2025, 11, 25), // Karácsony – december 25.
+        new Date(2025, 9, 23), // Nemzeti ünnep – október 23. 
+        new Date(2025, 9, 24), // Pihenőnap – október 24. (áthelyezett) 
+        new Date(2025, 10, 1), // Mindenszentek – november 1. 
+        new Date(2025, 11, 24), // Pihenőnap – december 24.
+        new Date(2025, 11, 25), // Karácsony – december 25. 
         new Date(2025, 11, 26), // Karácsony másnapja – december 26.
 
     ];
