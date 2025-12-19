@@ -394,6 +394,12 @@ body {
     }
 }
 
+/* Egyéni egérmutató elrejtése minden elemnél csak desktopon (nem mobil/telefonos verzióban) */
+@media (hover: hover) and (pointer: fine) {
+    * {
+        cursor: none !important;
+    }
+}
 
 /* Hivatkozás stílusa (frissítve: ikon kezelése és alap elrendezés) */
 .footer-links-container {

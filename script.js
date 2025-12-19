@@ -373,6 +373,35 @@ function updateAll() {
     updateRemainingBreak();  // <--- ÚJ
 }
 
+// ÚJ: Egyéni egérmutató inicializálása csak desktopon (nem érintőképernyős eszközökön)
+if (!('ontouchstart' in window)) {
+    const customCursor = document.createElement('div');
+    customCursor.style.position = 'fixed';
+    customCursor.style.pointerEvents = 'none';
+    customCursor.style.zIndex = '9999';
+    customCursor.style.width = '30px'; // Kép mérete
+    customCursor.style.height = '30px';
+    customCursor.innerHTML = '<img src="christmas-tree.png" style="width: 100%; height: 100%; transform: rotate(-25deg);">';
+    document.body.appendChild(customCursor);
+
+    document.addEventListener('mousemove', (e) => {
+        customCursor.style.left = `${e.clientX}px`;
+        customCursor.style.top = `${e.clientY}px`;
+    });
+
+    // Elrejtjük az alapértelmezett kurzort
+    document.body.style.cursor = 'none';
+
+    // ÚJ: Elrejtjük a custom kurzort, amikor az egér elhagyja az oldalt
+    document.addEventListener('mouseleave', () => {
+        customCursor.style.display = 'none';
+    });
+
+    // ÚJ: Megjelenítjük a custom kurzort, amikor az egér belép az oldalra
+    document.addEventListener('mouseenter', () => {
+        customCursor.style.display = 'block';
+    });
+}
 
 // Első futtatás és frissítés másodpercenként
 updateAll();
