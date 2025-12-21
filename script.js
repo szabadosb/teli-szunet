@@ -149,34 +149,33 @@ function initConfettiPool() {
 
 // ÚJ funkció: Konfetti aktiválása a poolból
 function activateConfetti() {
-    // Csak akkor aktiválunk újat, ha még van hely a maximális aktív konfetti számig
     if (activeConfettiCount >= MAX_ACTIVE_CONFETTI) {
         return;
     }
 
-    // Keressünk egy inaktív konfettit a poolban
     const confetti = confettiPool.find(c => c.style.display === 'none');
 
     if (confetti) {
-        confetti.style.display = 'block'; // Láthatóvá tesszük
+        confetti.style.display = 'block';
         confetti.style.left = `${Math.random() * 100}vw`;
-        confetti.style.backgroundColor = getRandomColor();
 
-        // Minden alkalommal újraindítjuk az animációt (performance hack)
+        // Szünet alatt hópelyhek helyett színes négyzetek
+        confetti.textContent = '❄️'; // hópelyhek emoji
+        confetti.style.color = 'white'; // fehér szín
+        confetti.style.backgroundColor = 'transparent'; // nincs háttérszín
+
         confetti.classList.remove('confetti');
-        void confetti.offsetWidth; // Force reflow to restart animation
+        void confetti.offsetWidth;
         confetti.classList.add('confetti');
 
         activeConfettiCount++;
 
-        // Automatikus "deaktiválás" az animáció végén
         setTimeout(() => {
             confetti.style.display = 'none';
             activeConfettiCount--;
         }, CONFETTI_ANIMATION_DURATION);
     }
 }
-
 
 function startConfetti() {
     if (confettiInterval) {
@@ -231,7 +230,7 @@ function updateMainCounter(target) {
     if (isBreak) {
         counterEl.classList.remove('fade-out');
         counterEl.textContent = "Téli szünet van!";
-        detailedEl.textContent = "Élvezd a vakációt! ❄️"; // EMOJI VÁLTOZÁS
+        detailedEl.textContent = "Élvezd a szünetet! 🎄🎁❄️ "; // EMOJI VÁLTOZÁS
 
         if (!confettiInterval) {
             startConfetti();
