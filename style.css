@@ -283,15 +283,21 @@ body {
 
 .confetti {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    font-size: 24px; /* nagyobb méret a hópelyheknek */
     opacity: 0.8;
     animation: confetti-fall 4s linear infinite;
+    pointer-events: none;
+    color: white; /* alapértelmezett fehér szín */
+    background: transparent; /* nincs háttér */
 }
 
 @keyframes confetti-fall {
     0% {
         transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+
+    80% {
         opacity: 1;
     }
 
